@@ -98,3 +98,21 @@ node "<SKILL_ROOT>/scripts/zhini-api.mjs" call zhini_xxx '{...}'
 ```
 
 推荐输出：`账号总额度 / 账号已使用 / 账号剩余 / 当前请求 API Key 实时已使用`，不展示完整密钥。
+
+## 8. 客户触达：批量打开对话并发送跟进消息
+
+用户：`把我刚选的这几个客户对话打开到我的对话，然后给他们发一条跟进文本，发完告诉我进度。`
+
+```text
+1. 与用户逐个核对收件 UID 清单（≤100 个），并确认任务标题与最终消息文案
+2. 批量打开对话：zhini_open_sessions({uids: ["UID_1", "UID_2", "..."]})   # 每次最多 20 个，分批执行
+3. 准备任务（不发送）：zhini_create_message_sending_task({title: "跟进回访", uids: [...], messages: [{msgtype: "text", content: "..."}]})
+   → 返回 confirmation_token
+4. 用户明确确认后，用完全相同的内容 + confirmation_token + user_confirmed: true 再次调用
+   → 返回 task_id
+5. 进度跟踪：zhini_get_message_sending_task_status({task_id: "TASK_ID"})   # 逐 UID 发送结果
+```
+
+发图片时第 3 步前先 `zhini_upload_image_for_message_sending` 上传（≤10 MiB，PNG/JPEG/GIF），
+用返回的 `url` 作为图片消息 `content`；重试创建任务时携带同一个 `idempotency_key` 防止重复群发。
+输出保留 `task_id`、任务标题、UID 总数和逐客户发送结果。
