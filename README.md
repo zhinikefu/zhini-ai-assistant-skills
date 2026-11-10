@@ -1,16 +1,16 @@
-# 知你AI助手 Skills｜让 AI 完成客户查询、会话研判、客户分群与客户触达
+# 知你AI助手 Skills｜多平台账号客户查询、聊天记录分析、客户分群与客户触达
 
-> 将知你 MCP 的客户、会话、消息、标签、渠道、客服查询与受确认的消息发送能力组合成 6 项可直接触发的业务工作流。
+> 把个微、企微、公众号、小程序、视频号、微信客服、抖音、小红书、微博、微信小店、微信小游戏、网站/H5 客服等平台账号接入知你AI助手，用 AI 完成客户查询、会话研判、客户分群与主动触达。
 
 [知你AI助手官网](https://ai.zhinikefu.com/) · [MCP 服务地址](https://mcp.h5bqb.top/mcp) · npm：`@zhiniai/zhini-skills`
 
 ## 产品介绍
 
-知你AI助手 Skills 是面向客户服务、销售、客户运营、质检和产品团队的 Agent Skills 工作流包。它基于知你 MCP，将客户搜索、资料查询、历史会话召回、聊天消息读取、标签与渠道解析、客户触达与消息发送等能力组合成可直接通过自然语言触发的业务任务。
+知你AI助手 Skills 是面向多平台账号运营、客户服务、销售、客户运营、质检和产品团队的 Agent Skills 工作流包。各平台账号的客户资料、会话和聊天记录接入知你AI助手后，AI 可以按自然语言指令定位客户或会话、读取消息上下文，并整理为客户摘要、会话依据、目标人群或问题线索；需要触达客户时，AI 会在用户明确确认后批量打开选定对话、发送文本或图片消息并跟踪发送进度。
 
-数据渠道覆盖已接入知你客服的 **个微/企微/视频号/微信小程序/公众号/服务号/微信客服/微信小店/抖音号/小红书/微博/网站及H5客服等平台渠道**。
+支持的平台账号：**个微/微信号、企微/企业微信、公众号/服务号、微信小程序、视频号、微信客服、抖音号、小红书、微博、微信小游戏、微信小店、网站/H5 在线客服**。
 
-用户只需描述要查的客户、问题、平台渠道或时间范围，AI 即可按照对应 Skill 的流程定位客户或会话、读取消息上下文，并整理为客户摘要、会话依据、目标人群或问题线索；需要触达客户时，AI 会在用户明确确认后批量打开选定对话、发送文本或图片消息并跟踪发送进度。
+用户只需描述要查的客户、问题、平台账号或时间范围，AI 即可按照对应 Skill 的流程定位客户或会话、读取消息上下文，并整理为客户摘要、会话依据、目标人群或问题线索；需要触达客户时，AI 会在用户明确确认后批量打开选定对话、发送文本或图片消息并跟踪发送进度。
 
 ## 6 项 Skills
 
@@ -147,4 +147,4 @@ MCP 服务支持两种认证方式，二选一：
 
 ## 关键词
 
-Agent Skills、客户查询、客户画像、当前会话分诊、客服会话研判、历史聊天记录、客户分群、消息群发、客户触达、批量发送、多平台客服、customer lookup、live session triage、conversation investigation、customer segmentation、message sending、Codex Skills、WorkBuddy Skills。
+知你AI助手、知你客服、多平台账号聚合、微信客户查询、企微客户、公众号客户、小程序客户、视频号客户、抖音客服、小红书客户、微博客服、微信小店、微信小游戏、网站客服、客服聊天记录、聊天记录分析、客户资料查询、当前会话分诊、历史会话研判、投诉退款分析、客户分群、销售线索识别、客户跟进、主动触达、消息群发、客户触达、批量发送、多平台客服、customer service、customer lookup、chat history、conversation analysis、customer segmentation、bulk messaging、lead generation、WeChat、WeCom、Douyin、Xiaohongshu、WeChat Mini Program、WeChat Store、WeChat Mini Game、website chat、Codex Skills、WorkBuddy Skills、Agent Skills、MCP。

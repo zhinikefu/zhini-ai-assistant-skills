@@ -1,32 +1,40 @@
 ---
 name: zhini-ai-assistant
-display_name: 知你AI助手-个微企微抖音各平台账号连接器
+display_name: 知你AI助手-多平台账号客户数据与聊天记录连接器
 display_name_en: Zhini AI Assistant
-description: "汇聚微信、抖音、小红书、微博及网站客服的客户资料与聊天记录，让 AI 帮你找客户、查会话、识别商机、分析服务问题，并在用户确认后批量触达客户。"
-description_zh: "汇聚个微、企微、视频号、微信小程序、公众号、服务号、微信客服、微信小店、抖音号、小红书、微博、网站及H5客服的客户资料与聊天记录，让 AI 帮你找客户、查会话、识别商机并分析服务问题；支持用户确认后批量打开选定客户对话，发送文本或图片消息，并查询发送进度和历史群发任务。"
-description_en: "Connect customer profiles and conversations from WeChat, Douyin, Xiaohongshu, Weibo, websites, and H5 support to AI for customer discovery, conversation analysis, lead identification, service insights, and user-confirmed follow-up messaging."
+description: "把个微/微信号、企微/企业微信、公众号、小程序、视频号、微信客服、抖音号、小红书、微博、微信小游戏、微信小店、网站/H5 在线客服等平台账号上的客户资料、客服聊天记录与当前/历史会话接入 AI 工具，完成客户查询、会话分析、客户分群、投诉退款研判、销售线索识别与商机跟进，并在用户确认后批量发送文本/图片消息。当用户搜索多平台客户查询、聊天记录分析、找高意向客户、客户分群或群发触达时使用。"
+description_zh: "将个微、企微、公众号、小程序、视频号、微信客服、抖音、小红书、微博、微信小游戏、微信小店、网站及H5客服等平台账号接入知你AI助手后，可用 AI 统一查询这些账号上的客户资料、客服聊天记录与会话，完成客户查询、会话分析、客户分群、投诉退款研判、商机识别与主动触达。"
+description_en: "Aggregate customer profiles, chat history and live/historical conversations from personal WeChat, WeCom, Official Accounts, WeChat Mini Programs, Channels, WeChat Customer Service, Douyin, Xiaohongshu, Weibo, WeChat Mini Games, WeChat Stores, and website/H5 live chat into AI tools. Use for customer lookup, chat history search, conversation analysis, customer segmentation, lead discovery and user-confirmed bulk messaging."
 examples_zh:
-  - 查看今天个微中正在排队或长时间未回复的客户会话，按等待时长排序，并列出客户名称、负责人和最近一条消息。
-  - 查找最近30天在企微咨询过价格的客户，结合客户标签和聊天记录筛选高意向客户，并整理后续跟进重点。
-  - 汇总最近90天抖音账号中涉及投诉、退款或售后的历史会话，读取消息上下文，并按问题类型整理关键证据。
-  - 把我选定的这些客户对话批量打开到我的对话，并发送跟进文本；完成后查看发送进度。
+  - 汇总我在个微、企微、抖音、小红书等平台账号上的客户咨询，按平台和意向程度列出本周值得跟进的客户名单。
+  - 查看今天各平台账号中正在排队或长时间未回复的客户会话，按等待时长排序，并列出客户名称、所属平台、负责人和最近一条消息。
+  - 检索最近90天公众号、小程序、视频号、微信小店和网站客服中涉及投诉、退款或售后的历史会话，读取消息上下文并按问题类型整理证据。
+  - 分析最近30天的客户对话，归纳共性问题和产品需求，并按渠道对比差异。
+  - 把选定的高意向客户对话批量打开到我的对话，确认后发送跟进文本，并查看群发进度。
 examples_en:
-  - Review today's queued or long-unanswered customer conversations on personal WeChat, sort them by waiting time, and list each customer, owner, and latest message.
-  - Find customers who asked about pricing on WeCom in the last 30 days, use tags and conversation history to identify high-intent customers, and summarize follow-up priorities.
-  - Summarize Douyin conversations from the last 90 days involving complaints, refunds, or after-sales service, read the message context, and organize the supporting evidence by issue type.
-  - Open the selected customer conversations in bulk and send follow-up texts after confirmation, then review delivery progress.
+  - Summarize customer inquiries across my personal WeChat, WeCom, Douyin and Xiaohongshu accounts, and list customers worth following up this week by platform and intent level.
+  - Review today's queued or long-unanswered customer conversations across platform accounts, sort them by waiting time, and list each customer, platform, owner and latest message.
+  - Search conversations from the last 90 days across Official Accounts, Mini Programs, Channels, WeChat Stores and website support for complaints, refunds or after-sales issues, read the context and organize evidence by issue type.
+  - Analyze the last 30 days of customer conversations, summarize common questions and product needs, and compare differences by channel.
+  - Open the selected high-intent customer conversations in bulk, send follow-up texts after confirmation, and review delivery progress.
 allowed-tools: "Bash"
-version: 1.0.9
+version: 1.0.11
 author: 知你客服
 disable-model-invocation: false
 user-invocable: true
 ---
 
-# 知你AI助手-个微企微抖音各平台账号连接器
+# 知你AI助手｜多平台账号客户数据与聊天记录连接器
+
+把个微/微信号、企微/企业微信、公众号、小程序、视频号、微信客服、抖音号、小红书、微博、微信小游戏、微信小店、网站/H5 在线客服等平台账号接入知你AI助手后，可以用 Codex、Claude Code、WorkBuddy 等 AI 工具统一查询这些账号上的客户资料、当前与历史会话、客服聊天记录，完成客户分析、客户分群、商机识别与主动触达。
 
 通过 Skill 内置脚本直接调用知你 HTTP 工具 API，查询多平台客户、会话和消息数据，并在用户明确确认后批量打开选定对话、发送文本或图片消息。此 Skill 独立运行，不检查、不安装也不依赖 WorkBuddy MCP 连接器。
 
-推荐触发词：客户查询、当前会话、历史会话、聊天记录、客户分群、消息发送、群发任务、API Key 用量。
+推荐触发词：多平台客户查询、微信客户、企微客户、公众号客户、小程序客户、视频号客户、抖音客户、小红书客户、微博客户、聊天记录、历史会话、客户分群、销售线索、投诉退款分析、主动触达、群发任务、API Key 用量。
+
+## 支持平台账号
+
+个微/微信号、企微/企业微信、公众号/服务号、微信小程序、视频号、微信客服、抖音号、小红书、微博、微信小游戏、微信小店、网站/H5 在线客服。
 
 ## 脚本调用
 
@@ -76,6 +84,7 @@ node "<SKILL_ROOT>/scripts/zhini-api.mjs" auth login
 ## 能力范围
 
 - 客户查询：姓名、手机号、微信号、客服/负责人、渠道、标签、性别、联系人类型和时间范围。
+- 平台账号与渠道字典：查询已接入的平台账号、渠道、客服和标签字典，按平台维度筛选与对比。
 - 当前队列：等待接待、我的会话、同事会话和 AI 会话的实时快照。
 - 历史研判：按客户、消息关键词、消息发送时间、客服、渠道、标签和联系人类型检索历史会话。
 - 消息上下文：按会话、客户或消息游标读取消息，并支持时间范围和前后翻页。
