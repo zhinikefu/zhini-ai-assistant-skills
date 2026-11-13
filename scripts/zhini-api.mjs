@@ -22,6 +22,9 @@ const TOOL_NAMES = new Set([
   "zhini_get_current_kefu",
   "zhini_list_active_sessions",
   "zhini_get_customer_profile",
+  "zhini_update_customer_profile",
+  "zhini_batch_set_customer_tags",
+  "zhini_remove_customer_tags",
   "zhini_list_tag_groups",
   "zhini_list_tags",
   "zhini_search_tags",
@@ -93,13 +96,14 @@ async function fetchJson(url, init) {
 // PKCE 浏览器授权 → 本地回调接 code → 令牌缓存（~/.zhini-ai-assistant/oauth-tokens.json）→ 过期自动刷新。
 
 const OAUTH_TOKENS_FILE = process.env.ZHINI_OAUTH_TOKENS_FILE || join(homedir(), ".zhini-ai-assistant", "oauth-tokens.json");
-const OAUTH_SCOPE = "zhini:read";
+const OAUTH_SCOPE = "zhini:read zhini:write:sessions zhini:write:messages zhini:write:customers";
 const OAUTH_CLIENT_NAME = "知你AI助手 Skills";
 const OAUTH_AUTH_WAIT_MS = Number(process.env.ZHINI_OAUTH_AUTH_WAIT_MS || 5 * 60 * 1000);
 const OAUTH_NO_OPEN = Boolean(process.env.ZHINI_OAUTH_NO_OPEN);
 
 const oauthTokens = {
   apiBase: API_BASE,
+  scope: OAUTH_SCOPE,
   issuer: "",
   clientId: "",
   redirectUri: "",
@@ -117,6 +121,7 @@ function loadOAuthTokens() {
   try {
     const cached = JSON.parse(readFileSync(OAUTH_TOKENS_FILE, "utf8"));
     if (cached.apiBase !== API_BASE) return; // API 地址变化后缓存作废。
+    if (cached.scope !== OAUTH_SCOPE) return; // 授权范围变化后旧令牌和客户端注册作废，重新授权。
     Object.assign(oauthTokens, {
       issuer: String(cached.issuer || ""),
       clientId: String(cached.clientId || ""),

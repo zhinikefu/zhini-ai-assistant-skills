@@ -48,6 +48,48 @@ node "<SKILL_ROOT>/scripts/zhini-api.mjs" call TOOL_NAME 'JSON_ARGUMENTS'
 
 **返回重点**：`data.uid`、`data.profile`，包括名称、联系方式、来源、负责人、备注和标签等标准化资料。
 
+### `zhini_update_customer_profile`
+
+**参数**：
+
+| 参数 | 类型 | 必填 | 说明 |
+|---|---|---:|---|
+| `uid` | string | 是 | 要修改的客户 UID，应由用户确认。 |
+| `user_name` | string | 否 | 姓名，最多 35 字；不传表示不修改，空字符串表示清空。 |
+| `user_remark_name` | string | 否 | 备注名，最多 35 字；不传表示不修改，空字符串表示清空。 |
+| `user_phone` | string | 否 | 电话，最多 50 字；不传表示不修改，空字符串表示清空。 |
+| `user_remark` | string | 否 | 描述，最多 800 字；不传表示不修改，空字符串表示清空。 |
+
+**用途**：在用户明确确认后修改客户资料；至少提供一个字段。
+
+**返回重点**：`data.uid`、`data.updated_fields`、`data.cleared_fields`、`data.values`。
+
+### `zhini_batch_set_customer_tags`
+
+**参数**：
+
+| 参数 | 类型 | 必填 | 说明 |
+|---|---|---:|---|
+| `uids` | string[] | 是 | 客户 UID 列表，去重后 1–20 个。 |
+| `tag_ids` | string[] | 是 | 现有标签 ID 列表，去重后 1–10 个；先用 `zhini_search_tags` 或 `zhini_list_tags` 获取。 |
+
+**用途**：为多个客户批量添加现有标签，只添加，不删除或替换已有标签。
+
+**返回重点**：`data.customer_count`、`data.tag_count`、`data.uids`、`data.tag_ids`。
+
+### `zhini_remove_customer_tags`
+
+**参数**：
+
+| 参数 | 类型 | 必填 | 说明 |
+|---|---|---:|---|
+| `uid` | string | 是 | 要移除标签的单个客户 UID。 |
+| `tag_ids` | string[] | 是 | 现有标签 ID 列表，去重后 1–10 个。 |
+
+**用途**：移除单个客户身上的标签；只取消该客户身上的标签，不删除标签定义。
+
+**返回重点**：`data.removed_tag_ids`、`data.remaining_tag_ids`、`data.sync_status`；`sync_status=failed` 时附带 `sync_warning`，表示渠道同步提交失败。
+
 ### `zhini_list_tag_groups`
 
 **参数**：无。

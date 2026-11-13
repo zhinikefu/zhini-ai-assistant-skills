@@ -116,3 +116,29 @@ node "<SKILL_ROOT>/scripts/zhini-api.mjs" call zhini_xxx '{...}'
 发图片时第 3 步前先 `zhini_upload_image_for_message_sending` 上传（≤10 MiB，PNG/JPEG/GIF），
 用返回的 `url` 作为图片消息 `content`；重试创建任务时携带同一个 `idempotency_key` 防止重复群发。
 输出保留 `task_id`、任务标题、UID 总数和逐客户发送结果。
+
+## 9. 修改客户资料
+
+用户：`把张三的电话改成 13800000000，描述清空。`
+
+```text
+1. 只有客户名时先 zhini_search_customers({name: "张三", page: 0, page_size: 20})，让用户确认 USER_UID
+2. 与用户确认最终值：user_phone="13800000000"，user_remark=""
+3. zhini_update_customer_profile({uid: "USER_UID", user_phone: "13800000000", user_remark: ""})
+4. 需要核对时 zhini_get_customer_profile({uid: "USER_UID"})
+```
+
+未传字段保持不变；空字符串表示清空；姓名/备注名最多 35 字，描述最多 800 字。
+
+## 10. 添加或移除客户标签
+
+用户：`给这几个客户打上“已回访”标签，再把张三的旧标签去掉。`
+
+```text
+1. zhini_search_tags({search_keyword: "已回访", include_grouped: true}) -> TAG_ID
+2. 确认客户 UID 名单；批量添加时 zhini_batch_set_customer_tags({uids: [...], tag_ids: ["TAG_ID"]})，单次最多 20 个客户、10 个标签
+3. 移除单个客户标签时确认单个 UID，调用 zhini_remove_customer_tags({uid: "USER_UID", tag_ids: ["TAG_ID"]})，单次最多 10 个标签
+4. 若移除接口返回 sync_status=failed，说明知你侧已移除但渠道同步提交失败，需要向用户说明
+```
+
+标签只操作客户身上的现有标签，不删除标签定义；不要编造标签 ID。

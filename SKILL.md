@@ -2,23 +2,27 @@
 name: zhini-ai-assistant
 display_name: 知你AI助手-多平台账号客户数据与聊天记录连接器
 display_name_en: Zhini AI Assistant
-description: "把个微/微信号、企微/企业微信、公众号、小程序、视频号、微信客服、抖音号、小红书、微博、微信小游戏、微信小店、网站/H5 在线客服等平台账号上的客户资料、客服聊天记录与当前/历史会话接入 AI 工具，完成客户查询、会话分析、客户分群、投诉退款研判、销售线索识别与商机跟进，并在用户确认后批量发送文本/图片消息。当用户搜索多平台客户查询、聊天记录分析、找高意向客户、客户分群或群发触达时使用。"
-description_zh: "将个微、企微、公众号、小程序、视频号、微信客服、抖音、小红书、微博、微信小游戏、微信小店、网站及H5客服等平台账号接入知你AI助手后，可用 AI 统一查询这些账号上的客户资料、客服聊天记录与会话，完成客户查询、会话分析、客户分群、投诉退款研判、商机识别与主动触达。"
-description_en: "Aggregate customer profiles, chat history and live/historical conversations from personal WeChat, WeCom, Official Accounts, WeChat Mini Programs, Channels, WeChat Customer Service, Douyin, Xiaohongshu, Weibo, WeChat Mini Games, WeChat Stores, and website/H5 live chat into AI tools. Use for customer lookup, chat history search, conversation analysis, customer segmentation, lead discovery and user-confirmed bulk messaging."
+description: "把个微/微信号、企微/企业微信、公众号、小程序、视频号、微信客服、抖音号、小红书、微博、微信小游戏、微信小店、网站/H5 在线客服等平台账号上的客户资料、客服聊天记录与当前/历史会话接入 AI 工具，完成客户查询、会话分析、客户分群、投诉退款研判、销售线索识别与商机跟进，并在用户确认后修改客户资料、添加或移除客户标签、批量发送文本/图片消息。当用户搜索多平台客户查询、聊天记录分析、找高意向客户、客户分群、客户资料修改、客户标签管理或群发触达时使用。"
+description_zh: "将个微、企微、公众号、小程序、视频号、微信客服、抖音、小红书、微博、微信小游戏、微信小店、网站及H5客服等平台账号接入知你AI助手后，可用 AI 统一查询这些账号上的客户资料、客服聊天记录与会话，完成客户查询、会话分析、客户分群、投诉退款研判、商机识别、客户资料修改、客户标签管理与主动触达。"
+description_en: "Aggregate customer profiles, chat history and live/historical conversations from personal WeChat, WeCom, Official Accounts, WeChat Mini Programs, Channels, WeChat Customer Service, Douyin, Xiaohongshu, Weibo, WeChat Mini Games, WeChat Stores, and website/H5 live chat into AI tools. Use for customer lookup, chat history search, conversation analysis, customer segmentation, lead discovery, customer profile updates, customer tag management and user-confirmed bulk messaging."
 examples_zh:
   - 汇总我在个微、企微、抖音、小红书等平台账号上的客户咨询，按平台和意向程度列出本周值得跟进的客户名单。
   - 查看今天各平台账号中正在排队或长时间未回复的客户会话，按等待时长排序，并列出客户名称、所属平台、负责人和最近一条消息。
   - 检索最近90天公众号、小程序、视频号、微信小店和网站客服中涉及投诉、退款或售后的历史会话，读取消息上下文并按问题类型整理证据。
   - 分析最近30天的客户对话，归纳共性问题和产品需求，并按渠道对比差异。
   - 把选定的高意向客户对话批量打开到我的对话，确认后发送跟进文本，并查看群发进度。
+  - 把张三的电话改成 13800000000、描述清空，并给确认好的客户批量打上“已回访”标签。
+  - 移除某个客户身上已经失效的售后标签。
 examples_en:
   - Summarize customer inquiries across my personal WeChat, WeCom, Douyin and Xiaohongshu accounts, and list customers worth following up this week by platform and intent level.
   - Review today's queued or long-unanswered customer conversations across platform accounts, sort them by waiting time, and list each customer, platform, owner and latest message.
   - Search conversations from the last 90 days across Official Accounts, Mini Programs, Channels, WeChat Stores and website support for complaints, refunds or after-sales issues, read the context and organize evidence by issue type.
   - Analyze the last 30 days of customer conversations, summarize common questions and product needs, and compare differences by channel.
   - Open the selected high-intent customer conversations in bulk, send follow-up texts after confirmation, and review delivery progress.
+  - Update a customer's phone number, clear their notes, and add confirmed tags to selected customers.
+  - Remove obsolete after-sales tags from a single customer.
 allowed-tools: "Bash"
-version: 1.0.11
+version: 1.0.12
 author: 知你客服
 disable-model-invocation: false
 user-invocable: true
@@ -28,7 +32,7 @@ user-invocable: true
 
 把个微/微信号、企微/企业微信、公众号、小程序、视频号、微信客服、抖音号、小红书、微博、微信小游戏、微信小店、网站/H5 在线客服等平台账号接入知你AI助手后，可以用 Codex、Claude Code、WorkBuddy 等 AI 工具统一查询这些账号上的客户资料、当前与历史会话、客服聊天记录，完成客户分析、客户分群、商机识别与主动触达。
 
-通过 Skill 内置脚本直接调用知你 HTTP 工具 API，查询多平台客户、会话和消息数据，并在用户明确确认后批量打开选定对话、发送文本或图片消息。此 Skill 独立运行，不检查、不安装也不依赖 WorkBuddy MCP 连接器。
+通过 Skill 内置脚本直接调用知你 HTTP 工具 API，查询多平台客户、会话和消息数据，并在用户明确确认后修改客户资料、添加或移除客户标签、批量打开选定对话、发送文本或图片消息。此 Skill 独立运行，不检查、不安装也不依赖 WorkBuddy MCP 连接器。
 
 推荐触发词：多平台客户查询、微信客户、企微客户、公众号客户、小程序客户、视频号客户、抖音客户、小红书客户、微博客户、聊天记录、历史会话、客户分群、销售线索、投诉退款分析、主动触达、群发任务、API Key 用量。
 
@@ -89,6 +93,8 @@ node "<SKILL_ROOT>/scripts/zhini-api.mjs" auth login
 - 历史研判：按客户、消息关键词、消息发送时间、客服、渠道、标签和联系人类型检索历史会话。
 - 消息上下文：按会话、客户或消息游标读取消息，并支持时间范围和前后翻页。
 - 客户分群：通过标签、渠道、客服、联系人类型、性别或时间条件组合筛选。
+- 客户资料维护：在用户明确确认后修改姓名、备注名、电话或描述；未传字段保持不变，空字符串表示清空。
+- 客户标签管理：为 1-20 个客户批量添加 1-10 个现有标签，或为单个客户移除最多 10 个标签；只操作客户身上的标签，不删除标签定义。
 - 客户触达与消息发送：在用户明确确认后，批量打开选定对话（每次最多 20 个），上传图片并创建最多 100 个 UID、最多 2 条文本/图片消息的异步群发任务，跟踪发送进度并管理历史任务。
 - API Key 用量：同时展示账号整体配额和当前请求 API Key 的实时用量。
 
@@ -123,6 +129,20 @@ node "<SKILL_ROOT>/scripts/zhini-api.mjs" auth login
 3. 标签代表已标注客户，是筛选信号之一；关键词命中也需结合消息上下文确认。
 4. 分页查询并记录实际条件、页码和返回数量，避免把单页结果当成完整分群。
 
+### 客户资料维护
+
+1. 确认目标客户 `uid`；只有客户名、手机号、微信号时先用 `zhini_search_customers` 找到候选并让用户确认。
+2. 确认要修改的字段和最终值；只支持姓名、备注名、电话、描述，未传字段保持不变，空字符串表示清空。
+3. 调用 `zhini_update_customer_profile`，只传用户要求修改的字段；姓名/备注名最多 35 字，描述最多 800 字。
+4. 修改后需要核对时调用 `zhini_get_customer_profile`。
+
+### 客户标签管理
+
+1. 添加标签：确认客户 UID 名单和标签后调用 `zhini_batch_set_customer_tags`；单次最多 20 个客户、10 个现有标签。
+2. 移除标签：确认单个客户 UID 和标签后调用 `zhini_remove_customer_tags`；单次最多 10 个标签，只取消该客户身上的标签，不删除标签定义。
+3. 标签名必须先用 `zhini_search_tags` 或 `zhini_list_tags` 解析为现有 `tag_id`，不得编造标签。
+4. 返回 `sync_status=failed` 时说明知你侧已保存但渠道同步提交失败，需要向用户说明。
+
 ### API Key 用量
 
 1. 通过内置脚本调用无参接口 `zhini_get_apikey_usage`。
@@ -144,5 +164,5 @@ node "<SKILL_ROOT>/scripts/zhini-api.mjs" auth login
 - 说明本次查询覆盖的账号、渠道、时间范围、筛选条件、页码和返回数量。
 - 对候选结果保留 `uid`、`sid`、`mid`、`kfid`、`channel_id`、`tag_id` 等证据 ID，区分事实、命中信号与模型归纳。
 - 当前队列结果标注为实时快照；历史结果标注消息时间范围和分页信息。
-- 查询保持只读；批量打开对话与消息发送必须在用户明确确认后执行，输出时保留 `task_id`、任务标题、UID 总数和逐客户发送结果。
+- 查询保持只读；修改客户资料、添加或移除客户标签、批量打开对话与消息发送必须在用户明确确认后执行，输出时保留 `task_id`、任务标题、UID 总数和逐客户发送结果。
 - 依据工具实际返回组织答案，不虚构客户身份、消息证据或筛选结果。
